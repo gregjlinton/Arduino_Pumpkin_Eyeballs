@@ -1,0 +1,70 @@
+// code for this kind of pumpkin project https://www.youtube.com/watch?v=ryUNHPJ3leY&t=142s
+
+#include <Servo.h> 
+
+class Eyeball
+{
+  Servo servo;              // the servo
+ 
+public: 
+ Eyeball(int interval) //the integer is actually just a placeholder and isn't used.
+  {
+  }
+  
+  void Attach(int pin)
+  {
+    servo.attach(pin, 1500, 1900); //attaches the servo to the current pin and limits it to between 1500 and 1900 miliseconds
+  }
+  
+  void Detach()
+  {
+    servo.detach();  //lets go of the servo once we're done with it.
+  }
+  
+  void Update()
+  {
+    randomSeed(analogRead(0));  //acts as a seed value for any random function used later.
+    servo.write(random(0,180)); //rotates the servo to a random position between 0 & 180
+    delay(random(100,250)); // randomly delays moving the next servo by 100 to 350 miliseconds.
+  }
+};
+ 
+ 
+
+ 
+Eyeball eye1(random(0,30));  //To be honest I'm not sure what this part really does.
+Eyeball eye2(random(0,30));
+Eyeball eye3(random(0,30));
+Eyeball eye4(random(0,30));
+Eyeball eye5(random(0,30));
+Eyeball eye6(random(0,30));
+Eyeball eye7(random(0,30));
+Eyeball eye8(random(0,30)); //keep adding however many Eyballs you want.
+ 
+void setup() 
+{ 
+  Serial.begin(9600);
+  eye1.Attach(2);
+  eye2.Attach(3);
+  eye3.Attach(4);
+  eye4.Attach(5);
+  eye5.Attach(6);
+  eye6.Attach(7);
+  eye7.Attach(8);
+  eye8.Attach(9);  //keep adding however many Eyballs you want.
+} 
+ 
+ 
+void loop() 
+{ 
+  eye1.Update();
+  eye2.Update();
+  eye3.Update();
+  eye4.Update();
+  eye5.Update();
+  eye6.Update();
+  eye7.Update();
+  eye8.Update();  //keep adding however many Eyballs you want.
+  
+  
+}
