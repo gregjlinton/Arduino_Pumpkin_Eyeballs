@@ -1,0 +1,53 @@
+#include <Servo.h> 
+
+class Eyeball
+{
+  Servo servo;              // the servo
+ 
+public: 
+ Eyeball(int interval) //the integer is actually just a placeholder and isn't used.
+  {
+  }
+  
+  void Attach(int pin)
+  {
+    servo.attach(pin, 1500, 1900); //attaches the servo to the current pin and limits it to between 1500 and 1900 miliseconds
+  }
+  
+  void Detach()
+  {
+    servo.detach();  //lets go of the servo once we're done with it.
+  }
+  
+  void Update()
+  {
+    //randomSeed(analogRead(0));  //acts as a seed value for any random function used later.
+    servo.write(0); 
+    delay(500); 
+    servo.write(180); //rotates the servo to a random position between 0 & 180
+    delay(500); 
+  }
+};
+ 
+ 
+
+ 
+Eyeball eye1(random(0,30));  //To be honest I'm not sure what this part really does.
+
+
+ 
+void setup() 
+{ 
+  Serial.begin(9600);
+  eye1.Attach(2);
+ 
+} 
+ 
+ 
+void loop() 
+{ 
+  eye1.Update();
+
+  
+  
+}
